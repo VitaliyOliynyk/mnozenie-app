@@ -10,7 +10,7 @@
         <div class="feedback-overlay" [class.show]="game.lastResult() !== null"
             [class.correct]="game.lastResult() === true" [class.wrong]="game.lastResult() === false">
             @if (game.lastResult() === true) {
-            <span class="icon">✅</span> Добrze!
+            <span class="icon">✅</span> Dobrze!
             } @else if (game.lastResult() === false) {
             <span class="icon">❌</span> Źle!
             }
