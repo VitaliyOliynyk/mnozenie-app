@@ -1,0 +1,52 @@
+.task-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--app-card-bg);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    margin-bottom: 2rem;
+    animation: float 6s ease-in-out infinite;
+    width: 100%;
+    max-width: 600px;
+}
+
+.equation {
+    font-size: 5rem;
+    font-weight: 900;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--app-text);
+
+    @media (max-width: 600px) {
+        font-size: 3.5rem;
+        gap: 0.5rem;
+    }
+}
+
+.operator,
+.equals {
+    color: var(--app-secondary);
+}
+
+.question {
+    color: var(--app-accent);
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-10px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}

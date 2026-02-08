@@ -1,0 +1,36 @@
+<div class="game-wrapper">
+    <div class="header">
+        <button class="icon-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
+    </div>
+
+    @if (game.currentTask(); as task) {
+    <div class="game-board">
+        <app-task-display [task]="task"></app-task-display>
+
+        <div class="feedback-overlay" [class.show]="game.lastResult() !== null"
+            [class.correct]="game.lastResult() === true" [class.wrong]="game.lastResult() === false">
+            @if (game.lastResult() === true) {
+            <span class="icon">✅</span> Добrze!
+            } @else if (game.lastResult() === false) {
+            <span class="icon">❌</span> Źle!
+            }
+        </div>
+
+        @if (game.lastResult() === null) {
+        @if (game.settings().mode() === GameMode.Choice) {
+        <app-answer-choices [options]="game.options()" (choice)="game.checkAnswer($event)">
+        </app-answer-choices>
+        } @else {
+        <app-answer-input (answer)="game.checkAnswer($event)"></app-answer-input>
+        }
+        }
+    </div>
+    }
+
+    <app-stats [stats]="game.stats()" (reset)="game.resetStats()"></app-stats>
+
+    @if (showSettings()) {
+    <app-settings [currentSettings]="game.settings()" (save)="onSettingsSave($event)" (close)="toggleSettings()">
+    </app-settings>
+    }
+</div>

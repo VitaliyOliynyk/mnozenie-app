@@ -1,0 +1,31 @@
+import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
+import { KeyboardComponent } from '../keyboard/keyboard.component';
+
+@Component({
+  selector: 'app-answer-input',
+  standalone: true,
+  imports: [KeyboardComponent],
+  templateUrl: './answer-input.component.html',
+  styleUrl: './answer-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AnswerInputComponent {
+  readonly answer = output<number>();
+  readonly value = signal<string>('');
+
+  onKey(key: number | 'DEL'): void {
+    if (key === 'DEL') {
+      this.value.update(v => v.slice(0, -1));
+    } else if (this.value().length < 3) {
+      this.value.update(v => v + key);
+    }
+  }
+
+  submit(): void {
+    const val = this.value();
+    if (val) {
+      this.answer.emit(parseInt(val, 10));
+      this.value.set('');
+    }
+  }
+}

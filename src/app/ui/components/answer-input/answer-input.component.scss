@@ -1,0 +1,51 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.display {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--app-text);
+    background: var(--app-card-bg);
+    padding: 1rem 3rem;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    min-width: 150px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn {
+    background: var(--app-primary);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 300px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+    transition: all 0.2s ease;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    &:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+    }
+
+    &:not(:disabled):active {
+        transform: translateY(1px);
+    }
+}

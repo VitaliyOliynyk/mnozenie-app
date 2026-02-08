@@ -1,0 +1,32 @@
+<div class="settings-overlay">
+    <div class="settings-card">
+        <h2>Ustawienia</h2>
+
+        <div class="form-group">
+            <label>Zakres pierwszej liczby (1 - {{ firstMax() }})</label>
+            <input type="range" min="2" max="20" [ngModel]="firstMax()" (ngModelChange)="firstMax.set($event)">
+        </div>
+
+        <div class="form-group">
+            <label>Zakres drugiej liczby (1 - {{ secondMax() }})</label>
+            <input type="range" min="2" max="20" [ngModel]="secondMax()" (ngModelChange)="secondMax.set($event)">
+        </div>
+
+        <div class="form-group">
+            <label>Tryb gry</label>
+            <div class="mode-toggles">
+                <button [class.active]="gameMode() === GameMode.Choice" (click)="gameMode.set(GameMode.Choice)">
+                    Wybór
+                </button>
+                <button [class.active]="gameMode() === GameMode.Input" (click)="gameMode.set(GameMode.Input)">
+                    Wpisywanie
+                </button>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn-cancel" (click)="close.emit()">Anuluj</button>
+            <button class="btn-save" (click)="onSave()">Zapisz</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="input-container">
+    <div class="display">
+        {{ value() || '?' }}
+    </div>
+
+    <div class="keyboard-wrapper">
+        <app-keyboard (keyPress)="onKey($event)"></app-keyboard>
+    </div>
+
+    <button class="submit-btn" [disabled]="!value()" (click)="submit()">
+        ZATWIERDŹ
+    </button>
+</div>

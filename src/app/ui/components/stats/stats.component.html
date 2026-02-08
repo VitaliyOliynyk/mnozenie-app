@@ -1,0 +1,18 @@
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="label">Razem</span>
+        <span class="value">{{ stats().total() }}</span>
+    </div>
+    <div class="stat-item">
+        <span class="label">Dobrze</span>
+        <span class="value success">{{ stats().correct() }}</span>
+    </div>
+    <div class="stat-item">
+        <span class="label">Wynik</span>
+        <span class="value">{{ stats().rate() }}%</span>
+    </div>
+
+    <button class="reset-btn" (click)="reset.emit()" aria-label="Reset statystyk">
+        ↺
+    </button>
+</div>
