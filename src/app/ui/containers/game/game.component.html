@@ -7,7 +7,7 @@
 
         <button class="settings-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
 
-        <div class="feedback-overlay" [class.show]="game.lastResult() !== null"
+        <div class="feedback-overlay" [class.show]="feedbackState() === 'result'"
             [class.correct]="game.lastResult() === true" [class.wrong]="game.lastResult() === false">
             @if (game.lastResult() === true) {
             <span class="icon">✅</span> Dobrze!
@@ -16,12 +16,21 @@
             }
         </div>
 
-        @if (game.lastResult() === null) {
+        @if (feedbackState() === 'correction' && game.settings().mode() === GameMode.Input) {
+        <div class="correction-banner">
+            <span class="label">Prawidłowa odpowiedź:</span>
+            <span class="value">{{ task.solution() }}</span>
+        </div>
+        }
+
+        @if (game.lastResult() === null || feedbackState() !== 'idle') {
         @if (game.settings().mode() === GameMode.Choice) {
-        <app-answer-choices [options]="game.options()" (choice)="game.checkAnswer($event)">
+        <app-answer-choices [options]="game.options()" [correctAnswer]="task.solution()"
+            [highlight]="feedbackState() === 'correction'"
+            (choice)="feedbackState() === 'idle' && game.checkAnswer($event)">
         </app-answer-choices>
         } @else {
-        <app-answer-input (answer)="game.checkAnswer($event)"></app-answer-input>
+        <app-answer-input (answer)="feedbackState() === 'idle' && game.checkAnswer($event)"></app-answer-input>
         }
         }
     </div>

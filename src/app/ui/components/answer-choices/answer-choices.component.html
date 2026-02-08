@@ -1,6 +1,7 @@
 <div class="choices-grid">
     @for (option of options(); track option) {
-    <button class="choice-btn" (click)="select(option)">
+    <button class="choice-btn" [class.correct-flash]="highlight() && option === correctAnswer()"
+        (click)="select(option)">
         {{ option }}
     </button>
     }

@@ -26,16 +26,31 @@ export class GameComponent {
   readonly showSettings = signal(false);
   readonly GameMode = GameMode;
 
+  readonly feedbackState = signal<'idle' | 'result' | 'correction'>('idle');
+
   constructor() {
     effect(() => {
       const result = this.game.lastResult();
-      if (result !== null) {
-        // Auto-advance after delay
+      
+      if (result === true) {
+        // Correct answer: Show result briefly, then next
+        this.feedbackState.set('result');
         setTimeout(() => {
           this.game.nextTask();
+          this.feedbackState.set('idle');
         }, 1500);
+      } else if (result === false) {
+        // Incorrect answer: Show result (2s) -> Correction (2s) -> Next
+        this.feedbackState.set('result');
+        setTimeout(() => {
+          this.feedbackState.set('correction');
+          setTimeout(() => {
+            this.game.nextTask();
+            this.feedbackState.set('idle');
+          }, 2000);
+        }, 2000);
       }
-    });
+    }, { allowSignalWrites: true }); // Enable signal writes in effect
   }
 
   toggleSettings(): void {

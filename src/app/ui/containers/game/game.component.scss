@@ -122,3 +122,58 @@
         z-index: 20;
     }
 }
+
+.correction-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--app-success);
+    color: white;
+    padding: 2rem 4rem;
+    border-radius: 12px;
+    box-shadow: 0 0 50px var(--app-success);
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+
+    .label {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .value {
+        font-size: 4rem;
+        font-weight: 900;
+    }
+
+    @media (max-width: 600px) {
+        width: 90%;
+        padding: 1.5rem;
+
+        .label {
+            font-size: 1rem;
+        }
+
+        .value {
+            font-size: 3rem;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
