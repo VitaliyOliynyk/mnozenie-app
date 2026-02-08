@@ -1,11 +1,11 @@
 <div class="game-wrapper">
-    <div class="header">
-        <button class="icon-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
-    </div>
+
 
     @if (game.currentTask(); as task) {
     <div class="game-board">
         <app-task-display [task]="task"></app-task-display>
+
+        <button class="settings-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
 
         <div class="feedback-overlay" [class.show]="game.lastResult() !== null"
             [class.correct]="game.lastResult() === true" [class.wrong]="game.lastResult() === false">
