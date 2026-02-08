@@ -1,9 +1,16 @@
+:host {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .choices-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     width: 100%;
     max-width: 500px;
+    margin: 0 auto;
 }
 
 .choice-btn {
@@ -19,8 +26,10 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 600px) {
-        height: 60px;
-        font-size: 1.5rem;
+        height: auto;
+        min-height: 80px;
+        font-size: 2.5rem;
+        padding: 1rem;
     }
 
     &:hover {
