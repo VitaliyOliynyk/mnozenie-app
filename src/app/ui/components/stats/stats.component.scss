@@ -11,6 +11,12 @@
     max-width: 500px;
     margin-top: auto; // Push to bottom if in flex container
     margin-bottom: 1rem;
+
+    @media (max-width: 600px) {
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        min-height: 50px;
+    }
 }
 
 .stat-item {
@@ -25,11 +31,19 @@
     opacity: 0.7;
     text-transform: uppercase;
     letter-spacing: 1px;
+
+    @media (max-width: 600px) {
+        font-size: 0.6rem;
+    }
 }
 
 .value {
     font-size: 1.2rem;
     font-weight: 700;
+
+    @media (max-width: 600px) {
+        font-size: 1rem;
+    }
 
     &.success {
         color: var(--app-success);
@@ -42,6 +56,13 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
+
+    @media (max-width: 600px) {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
     display: flex;
     align-items: center;
     justify-content: center;

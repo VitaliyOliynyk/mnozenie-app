@@ -1,3 +1,13 @@
+:host {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @media (max-width: 600px) {
+        width: auto;
+    }
+}
+
 .task-card {
     display: flex;
     justify-content: center;
@@ -14,9 +24,15 @@
     max-width: 600px;
 
     @media (max-width: 600px) {
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 15px;
+        padding: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        width: auto;
+        backdrop-filter: none;
+        animation: none;
     }
 }
 
@@ -41,6 +57,10 @@
 
 .question {
     color: var(--app-accent);
+
+    @media (max-width: 600px) {
+        display: none;
+    }
 }
 
 @keyframes float {

@@ -46,6 +46,13 @@
     justify-content: center;
     width: 100%;
     position: relative;
+
+    @media (max-width: 600px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 0.25rem;
+    }
 }
 
 .feedback-overlay {
