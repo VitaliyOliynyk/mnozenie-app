@@ -1,6 +1,8 @@
 <div class="game-wrapper">
 
-
+    @if (feedbackState() !== 'idle') {
+    <div class="disabled-overlay"></div>
+    }
     @if (game.currentTask(); as task) {
     <div class="game-board">
         <app-task-display [task]="task"></app-task-display>

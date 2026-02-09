@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-keyboard',
@@ -10,12 +10,17 @@ import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 })
 export class KeyboardComponent {
   readonly keyPress = output<number | 'DEL'>();
+  readonly disabled = input<boolean>(false);
 
   onDigit(digit: number): void {
-    this.keyPress.emit(digit);
+    if (!this.disabled()) {
+      this.keyPress.emit(digit);
+    }
   }
 
   onDelete(): void {
-    this.keyPress.emit('DEL');
+    if (!this.disabled()) {
+      this.keyPress.emit('DEL');
+    }
   }
 }

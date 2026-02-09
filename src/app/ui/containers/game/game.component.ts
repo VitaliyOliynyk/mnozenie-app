@@ -31,24 +31,24 @@ export class GameComponent {
   constructor() {
     effect(() => {
       const result = this.game.lastResult();
-      
+
       if (result === true) {
         // Correct answer: Show result briefly, then next
         this.feedbackState.set('result');
         setTimeout(() => {
           this.game.nextTask();
           this.feedbackState.set('idle');
-        }, 1500);
+        }, 1000);
       } else if (result === false) {
-        // Incorrect answer: Show result (2s) -> Correction (2s) -> Next
+        // Incorrect answer: Show result (1s) -> Correction (1s) -> Next
         this.feedbackState.set('result');
         setTimeout(() => {
           this.feedbackState.set('correction');
           setTimeout(() => {
             this.game.nextTask();
             this.feedbackState.set('idle');
-          }, 2000);
-        }, 2000);
+          }, 1000);
+        }, 1000);
       }
     }, { allowSignalWrites: true }); // Enable signal writes in effect
   }

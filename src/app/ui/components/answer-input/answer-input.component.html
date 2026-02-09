@@ -4,7 +4,7 @@
     </div>
 
     <div class="keyboard-wrapper">
-        <app-keyboard (keyPress)="onKey($event)"></app-keyboard>
+        <app-keyboard [disabled]="disabled()" (keyPress)="onKey($event)"></app-keyboard>
     </div>
 
     <button class="submit-btn" [disabled]="!value()" (click)="submit()">
