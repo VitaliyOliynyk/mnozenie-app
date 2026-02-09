@@ -26,11 +26,12 @@
         @if (game.lastResult() === null || feedbackState() !== 'idle') {
         @if (game.settings().mode() === GameMode.Choice) {
         <app-answer-choices [options]="game.options()" [correctAnswer]="task.solution()"
-            [highlight]="feedbackState() === 'correction'"
+            [highlight]="feedbackState() === 'correction'" [disabled]="feedbackState() !== 'idle'"
             (choice)="feedbackState() === 'idle' && game.checkAnswer($event)">
         </app-answer-choices>
         } @else {
-        <app-answer-input (answer)="feedbackState() === 'idle' && game.checkAnswer($event)"></app-answer-input>
+        <app-answer-input [disabled]="feedbackState() !== 'idle'"
+            (answer)="feedbackState() === 'idle' && game.checkAnswer($event)"></app-answer-input>
         }
         }
     </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { KeyboardComponent } from '../keyboard/keyboard.component';
 
 @Component({
@@ -12,8 +12,10 @@ import { KeyboardComponent } from '../keyboard/keyboard.component';
 export class AnswerInputComponent {
   readonly answer = output<number>();
   readonly value = signal<string>('');
+  readonly disabled = input<boolean>(false);
 
   onKey(key: number | 'DEL'): void {
+    if (this.disabled()) return;
     if (key === 'DEL') {
       this.value.update(v => v.slice(0, -1));
     } else if (this.value().length < 3) {
@@ -22,6 +24,7 @@ export class AnswerInputComponent {
   }
 
   submit(): void {
+    if (this.disabled()) return;
     const val = this.value();
     if (val) {
       this.answer.emit(parseInt(val, 10));

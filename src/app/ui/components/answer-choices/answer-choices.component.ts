@@ -13,8 +13,11 @@ export class AnswerChoicesComponent {
   readonly choice = output<number>();
   readonly correctAnswer = input<number>();
   readonly highlight = input<boolean>(false);
+  readonly disabled = input<boolean>(false);
 
   select(option: number): void {
-    this.choice.emit(option);
+    if (!this.disabled()) {
+      this.choice.emit(option);
+    }
   }
 }
