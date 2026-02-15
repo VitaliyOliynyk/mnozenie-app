@@ -39,3 +39,18 @@ Uruchomienie testów jednostkowych:
 ```bash
 ng test
 ```
+## Publikacja aplikacji Angular na GitHub Pages
+1. Instalacja gh-pages
+   ```bash
+   npm install -g gh-pages
+   ```
+2. Budowanie projektu
+   ```bash
+   ng build --base-href /mnozenie-app/
+   ```
+3. Publikacja
+   ```bash
+   npx gh-pages -d dist/mnozenie-app/browser
+   ```
+
+   
