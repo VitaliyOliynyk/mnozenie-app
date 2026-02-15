@@ -1,0 +1,7 @@
+<div class="feedback-overlay" [class.show]="show" [class.correct]="type === 'correct'" [class.wrong]="type === 'wrong'">
+    @if (type === 'correct') {
+    <span class="icon">✅</span> Dobrze!
+    } @else if (type === 'wrong') {
+    <span class="icon">❌</span> Źle!
+    }
+</div>
