@@ -5,9 +5,12 @@
     }
     @if (game.currentTask(); as task) {
     <div class="game-board">
-        <app-task-display [task]="task"></app-task-display>
-
-        <button class="settings-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
+        <div class="task-header">
+            <app-task-display [task]="task"
+                [userAnswer]="game.settings().mode() === GameMode.Input ? currentInputValue() : ''">
+            </app-task-display>
+            <button class="settings-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
+        </div>
 
         <div class="feedback-overlay" [class.show]="feedbackState() === 'result'"
             [class.correct]="game.lastResult() === true" [class.wrong]="game.lastResult() === false">
@@ -32,8 +35,9 @@
             (choice)="feedbackState() === 'idle' && game.checkAnswer($event)">
         </app-answer-choices>
         } @else {
-        <app-answer-input [disabled]="feedbackState() !== 'idle'"
-            (answer)="feedbackState() === 'idle' && game.checkAnswer($event)"></app-answer-input>
+        <app-answer-input [disabled]="feedbackState() !== 'idle'" (valueChange)="onInputValueChange($event)"
+            (answer)="feedbackState() === 'idle' && game.checkAnswer($event)">
+        </app-answer-input>
         }
         }
     </div>

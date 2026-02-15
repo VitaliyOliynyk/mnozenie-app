@@ -11,6 +11,7 @@ import { KeyboardComponent } from '../keyboard/keyboard.component';
 })
 export class AnswerInputComponent {
   readonly answer = output<number>();
+  readonly valueChange = output<string>();
   readonly value = signal<string>('');
   readonly disabled = input<boolean>(false);
 
@@ -21,6 +22,7 @@ export class AnswerInputComponent {
     } else if (this.value().length < 3) {
       this.value.update(v => v + key);
     }
+    this.valueChange.emit(this.value());
   }
 
   submit(): void {
@@ -29,6 +31,7 @@ export class AnswerInputComponent {
     if (val) {
       this.answer.emit(parseInt(val, 10));
       this.value.set('');
+      this.valueChange.emit('');
     }
   }
 }

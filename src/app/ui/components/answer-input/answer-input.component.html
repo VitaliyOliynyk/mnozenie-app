@@ -1,8 +1,4 @@
 <div class="input-container">
-    <div class="display">
-        {{ value() || '?' }}
-    </div>
-
     <div class="keyboard-wrapper">
         <app-keyboard [disabled]="disabled()" (keyPress)="onKey($event)"></app-keyboard>
     </div>

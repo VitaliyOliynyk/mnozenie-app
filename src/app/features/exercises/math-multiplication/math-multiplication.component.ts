@@ -33,6 +33,7 @@ export class MathMultiplicationComponent {
     readonly GameMode = GameMode;
 
     readonly feedbackState = signal<'idle' | 'result' | 'correction'>('idle');
+    readonly currentInputValue = signal<string>('');
 
     constructor() {
         effect(() => {
@@ -40,12 +41,14 @@ export class MathMultiplicationComponent {
 
             if (result === true) {
                 this.feedbackState.set('result');
+                this.currentInputValue.set('');
                 setTimeout(() => {
                     this.game.nextTask();
                     this.feedbackState.set('idle');
                 }, 1000);
             } else if (result === false) {
                 this.feedbackState.set('result');
+                this.currentInputValue.set('');
                 setTimeout(() => {
                     this.feedbackState.set('correction');
                     setTimeout(() => {
@@ -72,5 +75,12 @@ export class MathMultiplicationComponent {
         this.game.resetStats();
         this.game.nextTask();
         this.showSettings.set(false);
+    }
+
+    /**
+     * Updates current input value.
+     */
+    onInputValueChange(value: string): void {
+        this.currentInputValue.set(value);
     }
 }
