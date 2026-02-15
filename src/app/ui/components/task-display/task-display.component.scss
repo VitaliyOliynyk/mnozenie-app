@@ -57,10 +57,6 @@
 
 .question {
     color: var(--app-accent);
-
-    @media (max-width: 600px) {
-        display: none;
-    }
 }
 
 @keyframes float {

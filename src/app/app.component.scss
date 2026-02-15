@@ -1,0 +1,14 @@
+.exercise-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @media (max-width: 600px) {
+        min-height: calc(100vh - 70px);
+        align-items: flex-start;
+    }
+}

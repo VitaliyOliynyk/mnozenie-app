@@ -4,6 +4,6 @@
         <span class="operator">×</span>
         <span class="factor">{{ task().second() }}</span>
         <span class="equals">=</span>
-        <span class="question">?</span>
+        <span class="question">{{ userAnswer() || '?' }}</span>
     </div>
 </div>

@@ -1,1 +1,10 @@
-<app-game></app-game>
+<app-header [subjectDisplayName]="currentSubject()" [exerciseDisplayName]="currentExercise()"
+    (menuClick)="toggleSidebar()">
+</app-header>
+
+<app-exercise-sidebar [isOpen]="sidebarOpen()" (close)="closeSidebar()" (exerciseSelected)="onExerciseSelected($event)">
+</app-exercise-sidebar>
+
+<div class="exercise-container">
+    <ng-container #exerciseHost></ng-container>
+</div>

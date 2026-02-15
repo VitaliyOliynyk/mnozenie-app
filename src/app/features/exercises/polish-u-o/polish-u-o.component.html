@@ -1,0 +1,29 @@
+<div class="game-wrapper">
+
+    @if (feedbackState() !== 'idle') {
+    <div class="disabled-overlay"></div>
+    }
+
+    <div class="game-board">
+        @if (currentWord(); as word) {
+        <div class="word-display">
+            {{ feedbackState() === 'idle' ? word.displayWord : word.word }}
+        </div>
+
+        <div class="options-container">
+            <button class="option-btn" (click)="selectAnswer('u')" [disabled]="feedbackState() !== 'idle'">
+                U
+            </button>
+            <button class="option-btn" (click)="selectAnswer('ó')" [disabled]="feedbackState() !== 'idle'">
+                Ó
+            </button>
+        </div>
+        }
+    </div>
+
+    <app-feedback-banner [type]="lastResult() === true ? 'correct' : (lastResult() === false ? 'wrong' : null)"
+        [show]="feedbackState() === 'result'">
+    </app-feedback-banner>
+
+    <app-stats [stats]="stats()" (reset)="resetStats()"></app-stats>
+</div>

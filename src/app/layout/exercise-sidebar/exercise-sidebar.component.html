@@ -1,0 +1,31 @@
+<div class="sidebar-overlay" [@fadeIn]="isOpen ? 'open' : 'closed'" (click)="onOverlayClick()">
+</div>
+
+<aside class="sidebar" [@slideIn]="isOpen ? 'open' : 'closed'" (click)="onSidebarClick($event)">
+    <div class="sidebar-header">
+        <h2>Wybierz ćwiczenie</h2>
+        <button class="close-btn" (click)="onOverlayClick()" aria-label="Zamknij">×</button>
+    </div>
+
+    <nav class="sidebar-content">
+        @for (subject of subjects; track subject.subjectId) {
+        <div class="subject-group">
+            <button class="subject-btn" (click)="toggleSubject(subject.subjectId)"
+                [class.expanded]="isExpanded(subject.subjectId)">
+                <span class="subject-name">{{ subject.subjectDisplayName }}</span>
+                <span class="expand-icon">{{ isExpanded(subject.subjectId) ? '▼' : '▶' }}</span>
+            </button>
+
+            @if (isExpanded(subject.subjectId)) {
+            <div class="exercises-list">
+                @for (exercise of exercises(subject.subjectId); track exercise.exerciseId) {
+                <button class="exercise-btn" (click)="selectExercise(subject.subjectId, exercise.exerciseId)">
+                    {{ exercise.displayName }}
+                </button>
+                }
+            </div>
+            }
+        </div>
+        }
+    </nav>
+</aside>

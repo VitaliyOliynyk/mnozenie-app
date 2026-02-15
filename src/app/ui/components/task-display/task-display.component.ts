@@ -11,4 +11,5 @@ import { Task } from '../../../core/models/task';
 })
 export class TaskDisplayComponent {
   readonly task = input.required<Task>();
+  readonly userAnswer = input<string>('');
 }
