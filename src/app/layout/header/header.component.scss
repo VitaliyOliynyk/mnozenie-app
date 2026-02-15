@@ -1,0 +1,83 @@
+.app-header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 600px) {
+        padding: 0.75rem 1rem;
+    }
+}
+
+.exercise-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    color: white;
+
+    @media (max-width: 600px) {
+        font-size: 0.9rem;
+        gap: 0.3rem;
+    }
+
+    .subject {
+        font-weight: 600;
+    }
+
+    .separator {
+        opacity: 0.5;
+    }
+
+    .exercise {
+        font-weight: 400;
+    }
+}
+
+.menu-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    @media (max-width: 600px) {
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-icon {
+        font-size: 1.5rem;
+        line-height: 1;
+
+        @media (max-width: 600px) {
+            font-size: 1.3rem;
+        }
+    }
+}
