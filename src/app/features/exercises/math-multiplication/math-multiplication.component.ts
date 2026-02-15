@@ -5,6 +5,7 @@ import { AnswerChoicesComponent } from '../../../ui/components/answer-choices/an
 import { AnswerInputComponent } from '../../../ui/components/answer-input/answer-input.component';
 import { StatsComponent } from '../../../ui/components/stats/stats.component';
 import { SettingsComponent } from '../../../ui/components/settings/settings.component';
+import { FeedbackBannerComponent } from '../../../ui/common/components/feedback-banner/feedback-banner.component';
 import { Settings, GameMode } from '../../../core/models/settings';
 
 /**
@@ -22,6 +23,7 @@ import { Settings, GameMode } from '../../../core/models/settings';
         AnswerInputComponent,
         StatsComponent,
         SettingsComponent,
+        FeedbackBannerComponent,
     ],
     templateUrl: './math-multiplication.component.html',
     styleUrl: './math-multiplication.component.scss',

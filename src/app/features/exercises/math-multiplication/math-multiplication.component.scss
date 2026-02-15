@@ -75,39 +75,6 @@
     }
 }
 
-.feedback-overlay {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
-    padding: 2rem 4rem;
-    border-radius: 12px;
-    font-size: 3rem;
-    font-weight: 900;
-    color: white;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    white-space: nowrap;
-
-    &.show {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    &.correct {
-        background: var(--app-success);
-        box-shadow: 0 0 50px var(--app-success);
-    }
-
-    &.wrong {
-        background: var(--app-error);
-        box-shadow: 0 0 50px var(--app-error);
-    }
-}
 
 .settings-btn {
     background: rgba(255, 255, 255, 0.1);

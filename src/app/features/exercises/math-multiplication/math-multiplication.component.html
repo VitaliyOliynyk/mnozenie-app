@@ -12,14 +12,12 @@
             <button class="settings-btn" (click)="toggleSettings()" aria-label="Ustawienia">⚙️</button>
         </div>
 
-        <div class="feedback-overlay" [class.show]="feedbackState() === 'result'"
-            [class.correct]="game.lastResult() === true" [class.wrong]="game.lastResult() === false">
-            @if (game.lastResult() === true) {
-            <span class="icon">✅</span> Dobrze!
-            } @else if (game.lastResult() === false) {
-            <span class="icon">❌</span> Źle!
-            }
-        </div>
+
+        <app-feedback-banner
+            [type]="game.lastResult() === true ? 'correct' : (game.lastResult() === false ? 'wrong' : null)"
+            [show]="feedbackState() === 'result'">
+        </app-feedback-banner>
+
 
         @if (feedbackState() === 'correction' && game.settings().mode() === GameMode.Input) {
         <div class="correction-banner">
